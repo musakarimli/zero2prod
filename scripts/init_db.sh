@@ -37,6 +37,7 @@ then
     exit 1
   fi
   # Launch postgres using Docker
+  
   docker run \
       -e POSTGRES_USER=${DB_USER} \
       -e POSTGRES_PASSWORD=${DB_PASSWORD} \
@@ -44,7 +45,9 @@ then
       -p "${DB_PORT}":5432 \
       -d \
       --name "postgres_$(date '+%s')" \
-      postgres -N 1000
+      -h postgres_newsletter \
+      -v /postgres_data:/var/lib/postgresql/data \
+      postgres:15 -N 1000
       # ^ Increased maximum number of connections for testing purposes
 fi
 
