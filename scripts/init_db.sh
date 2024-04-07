@@ -46,7 +46,6 @@ then
       -d \
       --name "postgres_$(date '+%s')" \
       -h postgres_newsletter \
-      -v /postgres_data:/var/lib/postgresql/data \
       postgres:15 -N 1000
       # ^ Increased maximum number of connections for testing purposes
 fi
